@@ -1,0 +1,21 @@
+Package: hike4u
+Title: Create Maps of Hiking Trails near you
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Elin", family = "Gerdes", role = c("aut", "cre"), email = "elin.gerdes@stud-mail.uni-wuerzburg.de")
+Description: A package to plot local hiking routes from OSM within a specified buffer near your location.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+    basemaps,
+    cowplot,
+    dplyr,
+    ggplot2,
+    ggspatial,
+    lwgeom,
+    osmdata,
+    pgirmess,
+    sf,
+    units
