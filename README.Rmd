@@ -40,21 +40,20 @@ hike4u(9.93389691622025, 49.79895823510417, 10000, 1)
 
 ## Results
 
-Running the above mentioned example will print the following in your console:
+**Running the above mentioned example will print the following in your console:**
 
 
 ![](Images/get_number_routes.png)
 
-The first map that will be plotted is an overview map of the closest hiking route to your location:
+**The first map that will be plotted is an overview map of the closest hiking route to your location:**
 
 
 ![](Images/closest_route_nr_1_overview_map.png)
 
 
-The second map that will be plotted is a satellite map of the closest hiking route to your location:
+**The second map that will be plotted is a satellite map of the closest hiking route to your location:**
+
 
 ![](Images/closest_route_nr_1_satellite_map.png)
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
 
 
