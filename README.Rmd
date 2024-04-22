@@ -1,4 +1,11 @@
 # `hike4u`
+<<<<<<< HEAD
+=======
+
+---
+output: github_document
+---
+>>>>>>> 9dcff50911ad815e98466f35c13aaff5a27c3250
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
