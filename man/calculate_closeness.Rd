@@ -4,24 +4,31 @@
 \alias{calculate_closeness}
 \title{Calculate Closeness}
 \usage{
-calculate_closeness(final_routes, poi)
+calculate_closeness(longitude, latitude, sf_df)
 }
 \arguments{
-\item{final_routes}{the sf dataframe with hiking routes. Created by function "add_start_points".}
+\item{longitude}{the longitude of your location. Will create POI.}
 
-\item{poi}{the POI as an sf dataframe with your location as a point. Created by function "create_poi_df".}
+\item{latitude}{the latitude of your location. Will create POI.}
+
+\item{sf_df}{an sf dataframe with downloaded hiking routes from OSM with start points in the column "start_point". Created by function "add_start_points".}
 }
 \value{
-Returns a the sf dataframe "final_routes" with 3 new columns: the closeness value to your location, the distance between the route start point and your location, the length of the route.
+Returns the sf dataframe with 3 new columns: the closeness value to your location, the distance between the route start point and your location, the length of the route.
 }
 \description{
-\code{calculate_closeness} Calculates distances between each starting point in final_routes and the POI. Ranks these distances to determine the closeness of each. Calculates length of route.
+\code{calculate_closeness} calculates distances between each starting point of hiking routes in an sf dataframe and your defined location. Ranks these distances to determine the closeness of each. Calculates length of each route.
 }
 \examples{
 \dontrun{
 library(hike4u)
 
-final_routes <- calculate_closeness(final_routes, poi)
+#' # Retrieve the sample dataframe from the package
+final_routes <- system.file("extdata", "final_routes.rds", package = "hike4u")
+
+# Define your location with long=9.93389691622025 and lat=49.79895823510417,
+# and the sf dataframe "final_routes" within the function
+final_routes_cl <- calculate_closeness(9.93389691622025, 49.79895823510417, final_routes)
 }
 
 }

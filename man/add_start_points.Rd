@@ -4,21 +4,25 @@
 \alias{add_start_points}
 \title{Add Start Points}
 \usage{
-add_start_points(final_routes)
+add_start_points(sf_df)
 }
 \arguments{
-\item{final_routes}{the sf dataframe with hiking routes. Created by function "individual_routes".}
+\item{sf_df}{an sf dataframe with downloaded hiking routes from OSM with geometry \emph{Multilinestring} and an osm_id column. Otherwise created by function "indiv_routes".}
 }
 \value{
-Returns a the sf dataframe "final_routes" with the added starting points and their lat and long in 3 new columns.
+Returns the sf dataframe with the added starting points and their Latitude and Longitude in 3 new columns.
 }
 \description{
-\code{add_start_points} Adds starting points and their lat and long to sf df final_routes.
+\code{add_start_points} adds starting points of Multilinestring geometries and the lat and long of these start points to a dataframe.
 }
 \examples{
 \dontrun{
 library(hike4u)
 
+# Retrieve the sample dataframe from the package
+final_routes <- system.file("extdata", "final_routes.rds", package = "hike4u")
+
+# Define the sf dataframe "final_routes" within the function
 final_routes <- add_start_points(final_routes)
 }
 

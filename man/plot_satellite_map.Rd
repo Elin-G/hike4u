@@ -4,28 +4,33 @@
 \alias{plot_satellite_map}
 \title{Plot Satellite Map}
 \usage{
-plot_satellite_map(final_routes, poi, ext, closeness_value)
+plot_satellite_map(longitude, latitude, final_routes, closeness_value)
 }
 \arguments{
-\item{final_routes}{the sf dataframe with hiking routes. Created by function "calculate_closeness".}
+\item{longitude}{the longitude of your location. Will create POI.}
 
-\item{poi}{the POI as an sf dataframe with your location as a point. Created by function "create_poi_df".}
+\item{latitude}{the latitude of your location. Will create POI.}
 
-\item{ext}{the extent of the map as an sf dataframe. Created by function "calculate_ext".}
+\item{final_routes}{the sf dataframe with hiking routes as Multilinestring geometries. Created by function "calculate_closeness".}
 
-\item{closeness_value}{the defined closeness value as a Value. Created by function "def_closeness".}
+\item{closeness_value}{a defined closeness value. Choose between 1 and the max number of routes in your area. 1 is closest route to your location.}
 }
 \value{
 Returns a PNG file with the satellite map of the chosen route in the working directory. Or "No rows found with the specified closeness value."
 }
 \description{
-\code{plot_satellite_map} plots the satellite map of the chosen, by closeness value, route and exports the map as a PNG file to the working directory.
+\code{plot_satellite_map} plots the satellite map of the chosen route, by closeness value, and exports the map as a PNG file to the working directory.
 }
 \examples{
 \dontrun{
 library(hike4u)
 
-plot_satellite_map(final_routes, poi, ext, closeness_value)
+# Retrieve the sample dataframe from the package
+final_routes_cl <- system.file("extdata", "final_routes_cl.rds", package = "hike4u")
+
+# Define your location with long=9.93389691622025 and lat=49.79895823510417,
+# the sf dataframe "final_routes_cl" and the closeness value as 1
+plot_satellite_map(9.93389691622025, 49.79895823510417, final_routes_cl, 1)
 }
 
 }

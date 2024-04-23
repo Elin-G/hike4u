@@ -4,24 +4,28 @@
 \alias{get_number_routes}
 \title{Get Number of Routes}
 \usage{
-get_number_routes(final_routes, buffer)
+get_number_routes(longitude, latitude, buffer)
 }
 \arguments{
-\item{final_routes}{the sf dataframe with hiking routes. Created by function "calculate_closeness".}
+\item{longitude}{the longitude of your location. Will create POI.}
 
-\item{buffer}{the defined buffer around the POI in meters as a Value. Created by function "create_buffer".}
+\item{latitude}{the latitude of your location. Will create POI.}
+
+\item{buffer}{a defined buffer around the POI in meters.}
 }
 \value{
-Returns a text stating the amount of routes within the buffer area in console.
+Returns a message in console stating the amount of routes within the buffer area.
 }
 \description{
-\code{get_number_routes} Prints the number of hiking routes within the buffer area.
+\code{get_number_routes} prints the number of hiking routes within the buffer area.
 }
 \examples{
 \dontrun{
 library(hike4u)
 
-get_number_routes(final_routes, buffer)
+# Define your location with long=9.93389691622025 and lat=49.79895823510417,
+# and define the buffer as 10000 meters (10 km)
+get_number_routes(9.93389691622025, 49.79895823510417, 10000)
 }
 
 }

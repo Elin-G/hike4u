@@ -1,29 +1,34 @@
 #' Calculate Extent
 #'
-#' `calculate_ext` Calculates the extent the map should have depending on which route is chosen by closeness value.
+#' `calculate_ext` calculates the extent the map should have depending on which route is chosen by closeness value.
 #'
-#' @param final_routes the sf dataframe with hiking routes. Created by function "calculate_closeness".
-#' @param poi the POI as an sf dataframe with your location as a point. Created by function "create_poi_df".
-#' @param closeness_value the defined closeness value as a Value. Created by function "def_closeness".
+#' @param sf_df an sf dataframe with downloaded hiking routes from OSM with closeness values in the column "closeness". Created by function "calculate_closeness".
+#' @param closeness_value a defined closeness value. Choose between 1 and the max number of routes in your area. 1 = closest route to your location.
 #' @return Returns an sf dataframe "ext" with a polygon of the extent. Or "No rows found with the specified closeness value."
 #' @examples
 #' \dontrun{
 #' library(hike4u)
 #'
-#' ext <- calculate_ext(final_routes, poi, closeness_value)
+#' # Retrieve the sample dataframe from the package
+#' final_routes_cl <- system.file("extdata", "final_routes_cl.rds", package = "hike4u")
+#'
+#' # Define the sf dataframe "final_routes_cl" within the function and the closeness value as 1
+#' ext <- calculate_ext(final_routes_cl, 1)
 #' }
 #'
 #' @export
 
-calculate_ext <- function(final_routes, poi, closeness_value) {
-  # Transform final_routes to crs=4326 to make sure calculations work
-  final_routes <- sf::st_transform(final_routes, crs = 4326)
-  poi <- sf::st_transform(poi, crs = 4326)
+calculate_ext <- function(sf_df, closeness_value) {
+  # Transform sf_df to crs=4326 to make sure calculations work
+  sf_df <- sf::st_transform(sf_df, crs = 4326)
 
-  # Filter final_routes to include only the row with specified closeness value
-  closest_route <- final_routes[final_routes$closeness == closeness_value, ]
+  # Filter sf_df to include only the row with specified closeness value
+  closest_route <- sf_df[sf_df$closeness == closeness_value, ]
   if (nrow(closest_route) == 0) {
-    stop("No rows found with the specified closeness value.")
+    message("##################################################
+    \nNo row found with the specified closeness value.
+    \n##################################################")
+    return(NULL)
   }
 
   # Get the centroid of the geometry

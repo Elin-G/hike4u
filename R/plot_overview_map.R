@@ -1,22 +1,34 @@
 #' Plot Overview Map
 #'
-#' `plot_overview_map` plots the overview map of the chosen, by closeness value, route and exports the map as a PNG file to the working directory.
+#' `plot_overview_map` plots the overview map of the chosen route, by closeness value, and exports the map as a PNG file to the working directory.
 #'
-#' @param final_routes the sf dataframe with hiking routes. Created by function "calculate_closeness".
-#' @param poi the POI as an sf dataframe with your location as a point. Created by function "create_poi_df".
-#' @param ext the extent of the map as an sf dataframe. Created by function "calculate_ext".
-#' @param closeness_value the defined closeness value as a Value. Created by function "def_closeness".
+#' @param longitude the longitude of your location. Will create POI.
+#' @param latitude the latitude of your location. Will create POI.
+#' @param final_routes the sf dataframe with hiking routes as Multilinestring geometries. Created by function "calculate_closeness".
+#' @param closeness_value a defined closeness value. Choose between 1 and the max number of routes in your area. 1 is closest route to your location.
 #' @return Returns a PNG file with the overview map of the chosen route in the working directory. Or "No rows found with the specified closeness value."
 #' @examples
 #' \dontrun{
 #' library(hike4u)
 #'
-#' plot_overview_map(final_routes, poi, ext, closeness_value)
+#' # Retrieve the sample dataframe from the package
+#' final_routes_cl <- system.file("extdata", "final_routes_cl.rds", package = "hike4u")
+#'
+#' # Define your location with long=9.93389691622025 and lat=49.79895823510417,
+#' # the sf dataframe "final_routes_cl" and the closeness value as 1
+#' plot_overview_map(9.93389691622025, 49.79895823510417, final_routes_cl, 1)
 #' }
 #'
 #' @export
 
-plot_overview_map <- function(final_routes, poi, ext, closeness_value) {
+plot_overview_map <- function(longitude, latitude, final_routes, closeness_value) {
+
+  # Create POI dataframe
+  poi <- sf::st_as_sf(data.frame(longitude = longitude, latitude = latitude), coords = c("longitude", "latitude"), crs = 4326)
+
+  # Calculate extent needed for map
+  ext <- calculate_ext(final_routes, closeness_value)
+
   # Change crs to Web Mercator (EPSG: 3857) to be able to plot on top of basemap
   final_routes <- sf::st_transform(final_routes, crs = 3857)
   poi <- sf::st_transform(poi, crs = 3857)
@@ -27,7 +39,10 @@ plot_overview_map <- function(final_routes, poi, ext, closeness_value) {
   # Filter final_routes to get the row with specified closeness value
   closest_route <- final_routes[final_routes$closeness == closeness_value, ]
   if (nrow(closest_route) == 0) {
-    stop("No rows found with the specified closeness value.")
+    message("##################################################
+    \nNo row found with the specified closeness value.
+    \n##################################################")
+    return(NULL)
   }
 
   # Check if poi is within ext

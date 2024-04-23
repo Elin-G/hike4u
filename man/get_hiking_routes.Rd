@@ -4,25 +4,28 @@
 \alias{get_hiking_routes}
 \title{Get Hiking Routes}
 \usage{
-get_hiking_routes(poi, buffer)
+get_hiking_routes(longitude, latitude, buffer)
 }
 \arguments{
-\item{poi}{the POI as an sf dataframe with your location as a point. Created by function "create_poi_df".}
+\item{longitude}{the longitude of your location. Will create POI.}
 
-\item{buffer}{the defined buffer around the POI in meters as a Value. Created by function "create_buffer".}
+\item{latitude}{the latitude of your location. Will create POI.}
+
+\item{buffer}{a defined buffer around the POI in meters.}
 }
 \value{
 Returns an sf dataframe "hiking_routes" with the relevant hiking routes. If no hiking routes are found "No hiking routes found within your buffer area." is printed.
 }
 \description{
-\code{get_hiking_routes} Downloads the OSM data of local walking network of defined buffer around defined POI.
+\code{get_hiking_routes} Downloads the OSM data of local walking network of defined buffer around defined location.
 }
 \examples{
 \dontrun{
 library(hike4u)
 
-# Buffer of 10000 meters (10 km) around the POI
-hiking_routes <- get_hiking_routes(poi, buffer)
+# Define your location with long=9.93389691622025 and lat=49.79895823510417,
+# and define the buffer as 10000 meters (10 km)
+hiking_routes <- get_hiking_routes(9.93389691622025, 49.79895823510417, 10000)
 }
 
 }

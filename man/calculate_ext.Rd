@@ -4,26 +4,28 @@
 \alias{calculate_ext}
 \title{Calculate Extent}
 \usage{
-calculate_ext(final_routes, poi, closeness_value)
+calculate_ext(sf_df, closeness_value)
 }
 \arguments{
-\item{final_routes}{the sf dataframe with hiking routes. Created by function "calculate_closeness".}
+\item{sf_df}{an sf dataframe with downloaded hiking routes from OSM with closeness values in the column "closeness". Created by function "calculate_closeness".}
 
-\item{poi}{the POI as an sf dataframe with your location as a point. Created by function "create_poi_df".}
-
-\item{closeness_value}{the defined closeness value as a Value. Created by function "def_closeness".}
+\item{closeness_value}{a defined closeness value. Choose between 1 and the max number of routes in your area. 1 = closest route to your location.}
 }
 \value{
 Returns an sf dataframe "ext" with a polygon of the extent. Or "No rows found with the specified closeness value."
 }
 \description{
-\code{calculate_ext} Calculates the extent the map should have depending on which route is chosen by closeness value.
+\code{calculate_ext} calculates the extent the map should have depending on which route is chosen by closeness value.
 }
 \examples{
 \dontrun{
 library(hike4u)
 
-ext <- calculate_ext(final_routes, poi, closeness_value)
+# Retrieve the sample dataframe from the package
+final_routes_cl <- system.file("extdata", "final_routes_cl.rds", package = "hike4u")
+
+# Define the sf dataframe "final_routes_cl" within the function and the closeness value as 1
+ext <- calculate_ext(final_routes_cl, 1)
 }
 
 }
