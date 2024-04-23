@@ -99,6 +99,7 @@ The following functions are part of the `hike4u` package:
 `hike4u_sat`: _(longitude, latitude, buffer, closeness_value)_ - Plots a hiking route near your location as a satellite map.
 
 
+
 **Run with example data:**
 
 `merge_mls`: _(sf_df, column)_ - Merges multiple MultiLineStrings in a data frame into one MultiLineString.
