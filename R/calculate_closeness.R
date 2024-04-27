@@ -5,13 +5,13 @@
 #' @param longitude the longitude of your location. Will create POI.
 #' @param latitude the latitude of your location. Will create POI.
 #' @param sf_df an sf dataframe with downloaded hiking routes from OSM with start points in the column "start_point". Created by function "add_start_points".
-#' @return Returns the sf dataframe with 3 new columns: the closeness value to your location, the distance between the route start point and your location, the length of the route.
+#' @return Returns the sf dataframe with 3 new columns: the closeness value to your location, the distance between the route start point and your location, the length of the route in km.
 #' @examples
 #' \dontrun{
 #' library(hike4u)
 #'
 #'#' # Retrieve the sample dataframe from the package
-#' final_routes <- system.file("extdata", "final_routes.rds", package = "hike4u")
+#' final_routes <- readRDS(system.file("extdata", "final_routes.rds", package = "hike4u"))
 #'
 #' # Define your location with long=9.93389691622025 and lat=49.79895823510417,
 #' # and the sf dataframe "final_routes" within the function

@@ -20,7 +20,7 @@ Returns the sf dataframe with the added starting points and their Latitude and L
 library(hike4u)
 
 # Retrieve the sample dataframe from the package
-final_routes <- system.file("extdata", "final_routes.rds", package = "hike4u")
+final_routes <- readRDS(system.file("extdata", "final_routes.rds", package = "hike4u"))
 
 # Define the sf dataframe "final_routes" within the function
 final_routes <- add_start_points(final_routes)

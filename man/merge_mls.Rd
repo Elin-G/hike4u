@@ -22,7 +22,7 @@ Returns the sf dataframe with one row/geometry per value in defined column.
 library(hike4u)
 
 # Retrieve the sample dataframe from the package
-hiking_routes <- system.file("extdata", "hiking_routes.rds", package = "hike4u")
+hiking_routes <- readRDS(system.file("extdata", "hiking_routes.rds", package = "hike4u"))
 
 # Define the sf dataframe "hiking_routes" and the column osm_id within the function
 final_routes <- merge_mls(hiking_routes, "osm_id")

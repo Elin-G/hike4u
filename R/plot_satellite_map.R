@@ -1,6 +1,6 @@
 #' Plot Satellite Map
 #'
-#' `plot_satellite_map` plots the satellite map of the chosen route, by closeness value, and exports the map as a PNG file to the working directory.
+#' `plot_satellite_map` plots a satellite map of the chosen route, by closeness value, and exports the map as a PNG file to the working directory.
 #'
 #' @param longitude the longitude of your location. Will create POI.
 #' @param latitude the latitude of your location. Will create POI.
@@ -12,7 +12,7 @@
 #' library(hike4u)
 #'
 #' # Retrieve the sample dataframe from the package
-#' final_routes_cl <- system.file("extdata", "final_routes_cl.rds", package = "hike4u")
+#' final_routes_cl <- readRDS(system.file("extdata", "final_routes_cl.rds", package = "hike4u"))
 #'
 #' # Define your location with long=9.93389691622025 and lat=49.79895823510417,
 #' # the sf dataframe "final_routes_cl" and the closeness value as 1

@@ -26,7 +26,7 @@ Returns an sf dataframe containing a square polygon.
 library(hike4u)
 
 # Retrieve the sample dataframe from the package
-final_routes_cl <- system.file("extdata", "final_routes_cl.rds", package = "hike4u")
+final_routes_cl <- readRDS(system.file("extdata", "final_routes_cl.rds", package = "hike4u"))
 
 # Define the sf dataframe "final_routes_cl" within the function, the column
 # name "closeness" as a character string, the closeness value as 1,

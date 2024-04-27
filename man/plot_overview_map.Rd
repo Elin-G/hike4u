@@ -19,14 +19,14 @@ plot_overview_map(longitude, latitude, final_routes, closeness_value)
 Returns a PNG file with the overview map of the chosen route in the working directory. Or "No rows found with the specified closeness value."
 }
 \description{
-\code{plot_overview_map} plots the overview map of the chosen route, by closeness value, and exports the map as a PNG file to the working directory.
+\code{plot_overview_map} plots an overview map of the chosen route, by closeness value, and exports the map as a PNG file to the working directory.
 }
 \examples{
 \dontrun{
 library(hike4u)
 
 # Retrieve the sample dataframe from the package
-final_routes_cl <- system.file("extdata", "final_routes_cl.rds", package = "hike4u")
+final_routes_cl <- readRDS(system.file("extdata", "final_routes_cl.rds", package = "hike4u"))
 
 # Define your location with long=9.93389691622025 and lat=49.79895823510417,
 # the sf dataframe "final_routes_cl" and the closeness value as 1

@@ -96,34 +96,76 @@ hike4u_satellite(9.93389691622025, 49.79895823510417, 10000, 1)
 
 The following functions are part of the `hike4u` package:
 
-`get_number_routes`: *(longitude, latitude, buffer)* - Returns the
-number of hiking routes in the buffer area around your location.
+`get_number_routes(longitude, latitude, buffer)`: Returns the number of
+hiking routes in the buffer area around your location.
 
-`hike4u_ov`: *(longitude, latitude, buffer, closeness_value)* - Plots a
+`hike4u_ov(longitude, latitude, buffer, closeness_value)`: Plots a
 hiking route near your location as an overview map.
 
-`hike4u_sat`: *(longitude, latitude, buffer, closeness_value)* - Plots a
+`hike4u_sat(longitude, latitude, buffer, closeness_value)`: Plots a
 hiking route near your location as a satellite map.
+
+`get_hiking_routes(longitude, latitude, buffer)`: Downloads the OSM data
+of local walking network of defined buffer around defined location.
 
 **Run with example data:**
 
-`merge_mls`: *(sf_df, column)* - Merges multiple MultiLineStrings in a
-data frame into one MultiLineString.
+    # read sample dataframes of the hike4u package
 
-`squ_bbox`: *(sf_df, column, value, increase)* - Creates a bigger square
-bounding box of an sf object than sf::st_bbox.
+    hiking_routes <- readRDS(system.file("extdata", "hiking_routes.rds", package = "hike4u"))
+    final_routes <- readRDS(system.file("extdata", "final_routes.rds", package = "hike4u"))
+    final_routes_cl <- readRDS(system.file("extdata", "final_routes_cl.rds", package = "hike4u"))
 
-`squ_bbox_pol`: *(sf_df, column, value, increase)* - Creates a bigger
-square polygon around an af object than sf::st_bbox.
+`merge_mls(sf_df, column)`: Merges multiple MultiLineStrings in a data
+frame into one MultiLineString (use hiking_routes).
 
-`add_start_points`:
+`squ_bbox(sf_df, column, value, increase)`: Creates a bigger square
+bounding box of an sf object than sf::st_bbox (use final_routes_cl).
 
-`calculate_closeness`:
+`squ_bbox_pol(sf_df, column, value, increase)`: Creates a bigger square
+polygon around an af object than sf::st_bbox (use final_routes_cl).
 
-`calculate_ext`:
+`add_start_points(sf_df)`: Returns the sf dataframe with the added
+starting points of Multilinestring geometries and their Latitude and
+Longitude in 3 new columns (use final_routes).
 
-`get_hiking_routes`:
+`calculate_closeness(longitude, latitude, sf_df)`: Returns the sf
+dataframe with 3 new columns: the closeness value to your location, the
+distance between the route start point and your location, the length of
+the route in km (use final_routes).
 
-`plot_overview_map`:
+`calculate_ext(sf_df, closeness_value)`: Calculates the extent the map
+should have depending on which route is chosen by closeness value (use
+final_routes_cl).
 
-`plot_satellite_map`:
+`plot_overview_map(longitude, latitude, final_routes, closeness_value)`:
+Plots an overview map of the chosen route, by closeness value, and
+exports the map as a PNG file to the working directory (use
+final_routes_cl).
+
+`plot_satellite_map(longitude, latitude, final_routes, closeness_value)`:
+Plots a satellite map of the chosen route, by closeness value, and
+exports the map as a PNG file to the working directory (use
+final_routes_cl).
+
+## Arguments
+
+The following arguments are part of the `hike4u` package functions:
+
+    longitude         Longitude of your location. Will create POI.
+
+    latitude          Latitude of your location. Will create POI.
+
+    buffer            Buffer size around your location in meters.
+
+    closeness_value   A defined closeness value. Choose between 1 and the max number of routes in your area. 1 =                     closest route to your location.
+
+    sf_df             An sf dataframe with specifications (see functions themselves or help page.)
+
+    column            The column in an sf dataframe with the geometry to create the bbox around. Must be passed on                   as a character string.
+
+    value             The value in the column of an sf dataframe to filter by. Must be unique.
+
+    increase          The amount of meters to increase the extent of a bbox by.
+
+    final_routes      An sf dataframe with hiking routes as Multilinestring geometries. Created by function                          "calculate_closeness".

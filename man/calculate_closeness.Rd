@@ -14,7 +14,7 @@ calculate_closeness(longitude, latitude, sf_df)
 \item{sf_df}{an sf dataframe with downloaded hiking routes from OSM with start points in the column "start_point". Created by function "add_start_points".}
 }
 \value{
-Returns the sf dataframe with 3 new columns: the closeness value to your location, the distance between the route start point and your location, the length of the route.
+Returns the sf dataframe with 3 new columns: the closeness value to your location, the distance between the route start point and your location, the length of the route in km.
 }
 \description{
 \code{calculate_closeness} calculates distances between each starting point of hiking routes in an sf dataframe and your defined location. Ranks these distances to determine the closeness of each. Calculates length of each route.
@@ -24,7 +24,7 @@ Returns the sf dataframe with 3 new columns: the closeness value to your locatio
 library(hike4u)
 
 #' # Retrieve the sample dataframe from the package
-final_routes <- system.file("extdata", "final_routes.rds", package = "hike4u")
+final_routes <- readRDS(system.file("extdata", "final_routes.rds", package = "hike4u"))
 
 # Define your location with long=9.93389691622025 and lat=49.79895823510417,
 # and the sf dataframe "final_routes" within the function
