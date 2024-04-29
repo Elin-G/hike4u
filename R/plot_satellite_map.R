@@ -64,7 +64,7 @@ plot_satellite_map <- function(longitude, latitude, final_routes, closeness_valu
                          labels = c("red" = "Hiking Trail", "yellow" = "Starting Point", "black" = "Your Location")) + # Manual color mapping with custom labels
       ggplot2::labs(title = paste0("Closest Hiking Route to your Location (# ", closeness_value, ")"),
            subtitle = "Satellite Map",
-           caption = "Data Source: © Esri",
+           caption = "Data Source: \u00A9 Esri",
            color = "Legend",
            x = "Longitude",
            y = "Latitude") +
@@ -91,7 +91,7 @@ plot_satellite_map <- function(longitude, latitude, final_routes, closeness_valu
                          labels = c("red" = "Hiking Trail", "yellow" = "Starting Point")) + # Manual color mapping with custom labels
       ggplot2::labs(title = paste0("Closest Hiking Route to your Location (# ", closeness_value, ")"),
            subtitle = "Satellite Map",
-           caption = "Data Source: © Esri",
+           caption = "Data Source: \u00A9 Esri",
            color = "Legend",
            x = "Longitude",
            y = "Latitude") +

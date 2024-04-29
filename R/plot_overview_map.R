@@ -64,7 +64,7 @@ plot_overview_map <- function(longitude, latitude, final_routes, closeness_value
                          labels = c("black" = "Hiking Trail", "red" = "Starting Point", "#333333" = "Your Location")) + # Manual color mapping with custom labels
       ggplot2::labs(title = paste0("Closest Hiking Route to your Location (# ", closeness_value, ")"),
            subtitle = "Overview Map",
-           caption = "© OpenStreetMap contributors",
+           caption = "\u00A9 OpenStreetMap contributors",
            color = "Legend",
            x = "Longitude",
            y = "Latitude") +
@@ -91,7 +91,7 @@ plot_overview_map <- function(longitude, latitude, final_routes, closeness_value
                          labels = c("black" = "Hiking Trail", "red" = "Starting Point")) + # Manual color mapping with custom labels
       ggplot2::labs(title = paste0("Closest Hiking Route to your Location (# ", closeness_value, ")"),
            subtitle = "Overview Map",
-           caption = "© OpenStreetMap contributors",
+           caption = "\u00A9 OpenStreetMap contributors",
            color = "Legend",
            x = "Longitude",
            y = "Latitude") +
