@@ -1,6 +1,6 @@
 #' hike4u
 #'
-#' `hike4u_overview` uses your location, given in longitude and latitude, a given buffer size in meters to find hiking routes close to you. It plots an overview map of the route you have defined by closeness, and saves it to your working directory.
+#' `hike4u_ov` uses your location, given in longitude and latitude, a given buffer size in meters to find hiking routes close to you. It plots an overview map of the route you have defined by closeness, and saves it to your working directory.
 #'
 #' @param longitude the longitude of your location. Will create POI.
 #' @param latitude the latitude of your location. Will create POI.
@@ -13,12 +13,12 @@
 #'
 #' # Define your location with long=9.93389691622025 and lat=49.79895823510417,
 #' # define the buffer as 10000 meters (10 km) and the closeness value as 1
-#' hike4u_overview(9.93389691622025, 49.79895823510417, 10000, 1)
+#' hike4u_ov(9.93389691622025, 49.79895823510417, 10000, 1)
 #' }
 #'
 #' @export
 
-hike4u_overview <- function(longitude, latitude, buffer, closeness_value) {
+hike4u_ov <- function(longitude, latitude, buffer, closeness_value) {
 
   # Create POI dataframe
   poi <- sf::st_as_sf(data.frame(longitude = longitude, latitude = latitude), coords = c("longitude", "latitude"), crs = 4326)
