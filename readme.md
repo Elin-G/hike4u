@@ -1,4 +1,3 @@
-
 # `hike4u`
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -22,9 +21,7 @@ for planning hiking trips.
 
 You can install the released version of `hike4u` from GitHub:
 
-``` r
-devtools::install_github("Elin-G/hike4u")
-```
+    devtools::install_github("Elin-G/hike4u")
 
 ## Example
 
@@ -36,13 +33,11 @@ hiking routes are available in your selected buffer area.
 
 **Example code:**
 
-``` r
-library(hike4u)
+    library(hike4u)
 
-# Define your location with long=9.93389691622025 and lat=49.79895823510417, and define the buffer as 10000 meters (10 km)
+    # Define your location with long=9.93389691622025 and lat=49.79895823510417, and define the buffer as 10000 meters (10 km)
 
-get_number_routes(9.93389691622025, 49.79895823510417, 10000)
-```
+    get_number_routes(9.93389691622025, 49.79895823510417, 10000)
 
 **Running this example will print the following text in your console:**
 
@@ -66,13 +61,11 @@ hiking route, the third closest hiking route, and so on.
 
 **Example code:**
 
-``` r
-library(hike4u)
+    library(hike4u)
 
-# Define your location with long=9.93389691622025 and lat=49.79895823510417, define the buffer as 10000 meters (10 km) and the closeness value as 1
+    # Define your location with long=9.93389691622025 and lat=49.79895823510417, define the buffer as 10000 meters (10 km) and the closeness value as 1
 
-hike4u_overview(9.93389691622025, 49.79895823510417, 10000, 1)
-```
+    hike4u_ov(9.93389691622025, 49.79895823510417, 10000, 1)
 
 **Running this example will print the following text in your console:**
 
@@ -80,13 +73,11 @@ hike4u_overview(9.93389691622025, 49.79895823510417, 10000, 1)
 
 **Example code:**
 
-``` r
-library(hike4u)
+    library(hike4u)
 
-# Define your location with long=9.93389691622025 and lat=49.79895823510417, define the buffer as 10000 meters (10 km) and the closeness value as 1
+    # Define your location with long=9.93389691622025 and lat=49.79895823510417, define the buffer as 10000 meters (10 km) and the closeness value as 1
 
-hike4u_satellite(9.93389691622025, 49.79895823510417, 10000, 1)
-```
+    hike4u_sat(9.93389691622025, 49.79895823510417, 10000, 1)
 
 **Running this example will print the following text in your console:**
 
@@ -117,36 +108,36 @@ of local walking network of defined buffer around defined location.
     final_routes_cl <- readRDS(system.file("extdata", "final_routes_cl.rds", package = "hike4u"))
 
 `merge_mls(sf_df, column)`: Merges multiple MultiLineStrings in a data
-frame into one MultiLineString (use hiking_routes).
+frame into one MultiLineString (use hiking\_routes).
 
 `squ_bbox(sf_df, column, value, increase)`: Creates a bigger square
-bounding box of an sf object than sf::st_bbox (use final_routes_cl).
+bounding box of an sf object than sf::st\_bbox (use final\_routes\_cl).
 
 `squ_bbox_pol(sf_df, column, value, increase)`: Creates a bigger square
-polygon around an af object than sf::st_bbox (use final_routes_cl).
+polygon around an af object than sf::st\_bbox (use final\_routes\_cl).
 
 `add_start_points(sf_df)`: Returns the sf dataframe with the added
 starting points of Multilinestring geometries and their Latitude and
-Longitude in 3 new columns (use final_routes).
+Longitude in 3 new columns (use final\_routes).
 
 `calculate_closeness(longitude, latitude, sf_df)`: Returns the sf
 dataframe with 3 new columns: the closeness value to your location, the
 distance between the route start point and your location, the length of
-the route in km (use final_routes).
+the route in km (use final\_routes).
 
 `calculate_ext(sf_df, closeness_value)`: Calculates the extent the map
 should have depending on which route is chosen by closeness value (use
-final_routes_cl).
+final\_routes\_cl).
 
 `plot_overview_map(longitude, latitude, final_routes, closeness_value)`:
 Plots an overview map of the chosen route, by closeness value, and
 exports the map as a PNG file to the working directory (use
-final_routes_cl).
+final\_routes\_cl).
 
 `plot_satellite_map(longitude, latitude, final_routes, closeness_value)`:
 Plots a satellite map of the chosen route, by closeness value, and
 exports the map as a PNG file to the working directory (use
-final_routes_cl).
+final\_routes\_cl).
 
 ## Arguments
 
