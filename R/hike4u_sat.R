@@ -1,4 +1,4 @@
-#' hike4u
+#' Create Satellite Map
 #'
 #' `hike4u_sat` uses your location, given in longitude and latitude, a given buffer size in meters to find hiking routes close to you. It plots an overview map of the route you have defined by closeness, and saves it to your working directory.
 #'

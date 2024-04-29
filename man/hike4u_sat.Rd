@@ -2,7 +2,7 @@
 % Please edit documentation in R/hike4u_sat.R
 \name{hike4u_sat}
 \alias{hike4u_sat}
-\title{hike4u}
+\title{Create Satellite Map}
 \usage{
 hike4u_sat(longitude, latitude, buffer, closeness_value)
 }

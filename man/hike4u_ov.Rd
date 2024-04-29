@@ -2,7 +2,7 @@
 % Please edit documentation in R/hike4u_ov.R
 \name{hike4u_ov}
 \alias{hike4u_ov}
-\title{hike4u}
+\title{Create Overview Map}
 \usage{
 hike4u_ov(longitude, latitude, buffer, closeness_value)
 }
